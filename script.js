@@ -21,11 +21,9 @@ function Book(title, author, pages, read) {
 
 // Adds books to the library array
 function addBookToLibrary() {
-    addBook.addEventListener('click', e => {
-        const newBook = new Book(titleForm, authorForm, pagesForm, readForm);
-        library.push(newBook);
-        render();
-    })
+    const newBook = new Book(titleForm, authorForm, pagesForm, readForm);
+    library.push(newBook);
+    render();
 }
 
 // render books, loops through library and shows the books on shelf
@@ -44,5 +42,5 @@ function render() {
     shelf.innerHTML = shelfString;
 }
 
-addBookToLibrary();
+addBook.addEventListener('click', addBookToLibrary);
 render();
