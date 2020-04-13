@@ -29,14 +29,14 @@ function addBookToLibrary() {
 }
 
 // render books, loops through library and shows the books on shelf
-function render(){
-    let shelfString = ''
+function render() {
+    let shelfString = '';
     for (let i = 0; i < library.length; i++) {
         shelfString += `
         <div class="cover">
             <h2>${library[i].title}</h2>
             <h3>${library[i].author}</h3>
-            <h4>${library[i].pages}</h4>
+            <h4>${library[i].pages} pages</h4>
             <h4>${library[i].read ? 'Read' : 'Not read'}</h4>
         </div>
         `;
