@@ -4,6 +4,8 @@ const authorForm = document.querySelector('#author').value;
 const pagesForm = document.querySelector('#pages').value;
 const readForm = document.querySelector('#read').checked;
 const addBook = document.querySelector('#add-book');
+const newBook = document.querySelector('#new-book');
+const form = document.querySelector('#form');
 
 // Starter Books
 const hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
@@ -42,5 +44,14 @@ function render() {
     shelf.innerHTML = shelfString;
 }
 
+function formToggle() {
+    if (form.style.display === 'none'){
+        form.style.display = 'block';
+    } else {
+        form.style.display = 'none';
+    }
+}
+
+newBook.addEventListener('click', formToggle);
 addBook.addEventListener('click', addBookToLibrary);
 render();
