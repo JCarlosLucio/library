@@ -1,4 +1,9 @@
 const shelf = document.querySelector('#shelf');
+const titleForm = document.querySelector('#title').value;
+const authorForm = document.querySelector('#author').value;
+const pagesForm = document.querySelector('#pages').value;
+const readForm = document.querySelector('#read').checked;
+const addBook = document.querySelector('#add-book');
 
 // Starter Books
 const hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
@@ -12,6 +17,15 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+}
+
+// Adds books to the library array
+function addBookToLibrary() {
+    addBook.addEventListener('click', e => {
+        const newBook = new Book(titleForm, authorForm, pagesForm, readForm);
+        library.push(newBook);
+        render();
+    })
 }
 
 // render books, loops through library and shows the books on shelf
@@ -29,4 +43,6 @@ function render(){
     }
     shelf.innerHTML = shelfString;
 }
+
+addBookToLibrary();
 render();
