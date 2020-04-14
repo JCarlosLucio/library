@@ -13,36 +13,43 @@ body {
 }
 
 .dark {
-    background: #283048;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #859398, #283048);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #859398, #283048); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: black;
     color: white;
 }
 
 .light {
-    background: #757F9A;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #D7DDE8, #757F9A);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: white;
     color: black;
 }
 
 header {
-    background-image: url('https://source.unsplash.com/lxlo92w-X7c');
-    height: 13rem;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-bottom: 1.5rem solid black;
-    border-top: 1.5rem solid black;
-    color: white;
-    font-size: 2.5rem;
     display: flex;
+    font-size: 1rem;
     justify-content: center;
     align-items: center;
+    margin: 1rem 5vw;
+    padding: 1rem;
+    border: 1px solid;
 }
 
 header h1 {
+    display: inline;
+    position: absolute;
+    font-size: 4rem;
+    letter-spacing: normal;
+    text-shadow: 1rem 1rem red, -1rem -1rem cyan;
+    border: 2px solid;
+    margin: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+header p {
+    font-size: 1rem;
+    letter-spacing: 2vw;
     margin: 0;
-    text-shadow: 0 0 10px black;
+    text-align: center;
+    line-height: 3vh;
 }
 
 #new-book {
@@ -51,5 +58,4 @@ header h1 {
     width: 6rem;
     height: 6rem;
     border: none;
-    color: white;
 }
