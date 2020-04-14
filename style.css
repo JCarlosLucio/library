@@ -22,12 +22,19 @@ body {
     color: black;
 }
 
-header {
+main, header {
     display: flex;
+    margin: 1rem 5vw;
+}
+
+main {
+    flex-direction: column;
+}
+
+header {
     font-size: 1rem;
     justify-content: center;
     align-items: center;
-    margin: 1rem 5vw;
     padding: 1rem;
     border: 1px solid;
 }
