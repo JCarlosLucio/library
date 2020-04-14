@@ -44,3 +44,12 @@ header h1 {
     margin: 0;
     text-shadow: 0 0 10px black;
 }
+
+#new-book {
+    background: none;
+    font-size: 4rem;
+    width: 6rem;
+    height: 6rem;
+    border: none;
+    color: white;
+}
