@@ -45,13 +45,24 @@ function render() {
 }
 
 function formToggle() {
-    if (form.style.display === 'none'){
+    if (form.style.display === 'none') {
         form.style.display = 'block';
     } else {
         form.style.display = 'none';
     }
 }
+function newBookHover() {
+    if (newBook.firstElementChild.classList[1] === 'fa-book') { 
+        newBook.firstElementChild.classList.remove('fa-book')
+        newBook.firstElementChild.classList.add('fa-book-open')
+    } else if(newBook.firstElementChild.classList[1] === 'fa-book-open') {
+        newBook.firstElementChild.classList.remove('fa-book-open')
+        newBook.firstElementChild.classList.add('fa-book')
+    }
+}
 
+newBook.addEventListener('mouseenter', newBookHover);
+newBook.addEventListener('mouseleave', newBookHover);
 newBook.addEventListener('click', formToggle);
 addBook.addEventListener('click', addBookToLibrary);
 render();
