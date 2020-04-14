@@ -45,12 +45,10 @@ function render() {
 }
 
 function formToggle() {
-    if (form.style.display === 'none') {
-        form.style.display = 'block';
-    } else {
-        form.style.display = 'none';
-    }
+    form.classList.toggle('form-show');
+    form.classList.toggle('form-hide');
 }
+
 function newBookHover() {
     if (newBook.firstElementChild.classList[1] === 'fa-book') { 
         newBook.firstElementChild.classList.remove('fa-book')
