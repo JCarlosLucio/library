@@ -22,6 +22,31 @@ body {
     color: black;
 }
 
+.new-book-section, .form-show, #new-book-form, #new-book {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-hide {
+    display:none;
+}
+
+.form-show {
+    width: 13rem;
+    border: 1px solid;
+    padding: 1rem;
+    
+}
+
+#title, #author, #pages, #read {
+    background-color: none;
+    margin: 1rem;
+    border: 0;
+    border-bottom: 1px solid;
+}
+
 main, header {
     display: flex;
     margin: 1rem 5vw;
@@ -61,8 +86,13 @@ header p {
 
 #new-book {
     background: none;
-    font-size: 4rem;
-    width: 6rem;
-    height: 6rem;
+    font-size: 3rem;
+    width: fit-content;
     border: none;
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+}
+
+#new-book:hover {
+    text-shadow: 0.3rem 0.3rem rgba(255, 0, 0, 0.7), -0.3rem -0.3rem rgba(0, 255, 255, 0.7);
 }
