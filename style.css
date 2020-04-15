@@ -86,6 +86,7 @@ header p {
 
 #new-book {
     background: none;
+    font-family: 'Sanchez', serif;
     font-size: 3rem;
     width: fit-content;
     border: none;
