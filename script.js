@@ -1,8 +1,8 @@
 const shelf = document.querySelector('#shelf');
-const titleForm = document.querySelector('#title').value;
-const authorForm = document.querySelector('#author').value;
-const pagesForm = document.querySelector('#pages').value;
-const readForm = document.querySelector('#read').checked;
+const titleForm = document.querySelector('#title');
+const authorForm = document.querySelector('#author');
+const pagesForm = document.querySelector('#pages');
+const readForm = document.querySelector('#read');
 const addBook = document.querySelector('#add-book');
 const newBook = document.querySelector('#new-book');
 const form = document.querySelector('#form');
@@ -23,9 +23,10 @@ function Book(title, author, pages, read) {
 
 // Adds books to the library array
 function addBookToLibrary() {
-    const newBook = new Book(titleForm, authorForm, pagesForm, readForm);
+    let newBook = new Book(titleForm.value, authorForm.value, pagesForm.value, readForm.checked);
     library.push(newBook);
     render();
+    formToggle();
 }
 
 // render books, loops through library and shows the books on shelf
