@@ -35,10 +35,12 @@ function render() {
     for (let i = 0; i < library.length; i++) {
         shelfString += `
         <div class="cover">
-            <h2>${library[i].title}</h2>
-            <h3>${library[i].author}</h3>
-            <h4>${library[i].pages} pages</h4>
-            <h4>${library[i].read ? 'Read' : 'Not read'}</h4>
+            <div class="cover-border">
+                <h2>${library[i].title}</h2>
+            </div>
+                <h3>${library[i].author}</h3>
+                <h4>${library[i].pages} pages</h4>
+                <h4>${library[i].read ? 'Read' : 'Not read'}</h4>
         </div>
         `;
     }
