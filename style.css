@@ -37,7 +37,7 @@ body {
     width: 13rem;
     border: 1px solid;
     padding: 1rem;
-    
+    margin-bottom: 1rem;
 }
 
 #title, #author, #pages, #read {
@@ -104,4 +104,26 @@ header p {
 
 #new-book:hover, #add-book:hover {
     text-shadow: 0.3rem 0.3rem rgba(255, 0, 0, 0.7), -0.3rem -0.3rem rgba(0, 255, 255, 0.7);
+}
+
+.cover-border {
+    font-family: 'Sanchez', serif;
+    border-style: double;
+    padding: 1rem;
+}
+
+.cover {
+    font-family: 'Cutive Mono', monospace;
+    border: 1px solid;
+    width: 13rem;
+    text-align: center;
+    padding: 2rem;
+    margin: 1rem;
+}
+
+#shelf {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
