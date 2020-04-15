@@ -84,6 +84,14 @@ header p {
     line-height: 3vh;
 }
 
+#add-book {
+    font-family: 'Sanchez', serif;
+    font-size: 1rem;
+    background: none;
+    border: 2px solid;
+    padding: 0.7rem 2rem;
+}
+
 #new-book {
     background: none;
     font-family: 'Sanchez', serif;
@@ -94,6 +102,6 @@ header p {
     padding: 1rem 2rem;
 }
 
-#new-book:hover {
+#new-book:hover, #add-book:hover {
     text-shadow: 0.3rem 0.3rem rgba(255, 0, 0, 0.7), -0.3rem -0.3rem rgba(0, 255, 255, 0.7);
 }
