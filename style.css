@@ -110,6 +110,7 @@ header p {
     font-family: 'Sanchez', serif;
     border-style: double;
     padding: 1rem;
+    margin-top: 2rem;
 }
 
 .cover {
@@ -117,7 +118,7 @@ header p {
     border: 1px solid;
     width: 13rem;
     text-align: center;
-    padding: 2rem;
+    padding: 0 2rem 2rem 2rem;
     margin: 1rem;
 }
 
@@ -126,4 +127,24 @@ header p {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.delete-book {
+    position: absolute;
+    display: flex;
+    align-items: end;
+    margin-left: 0.8rem;
+    border-radius: 0 0 0.3rem 0.3rem;
+    width: 2rem;
+    height: 3.5rem;
+    background-color: red;
+    border: 1px solid;
+    color: transparent;
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+
+}
+
+.delete-book:hover {
+    color: white;
 }
