@@ -6,15 +6,12 @@ const readForm = document.querySelector('#read');
 const addBook = document.querySelector('#add-book');
 const newBook = document.querySelector('#new-book');
 const form = document.querySelector('#form');
-
 let deleteBookBtns = [];
-let library = [];
 
 // Starter Books
 const hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
-library.push(hobbit);
 const harryPotter = new Book('Harry Potter and the Philosopher\'s Stone', 'J.K. Rowling', 246, true);
-library.push(harryPotter);
+let library = [hobbit, harryPotter];
 
 // book constructor function
 function Book(title, author, pages, read) {
@@ -22,7 +19,6 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.index = library.length;
 }
 
 // Adds books to the library array
@@ -39,7 +35,7 @@ function render() {
     for (let i = 0; i < library.length; i++) {
         shelfString += `
         <div class="cover">
-        <button class="delete-book" data-index-number="${library[i].index}">Delete</button>
+        <button class="delete-book" data-title="${library[i].title}">Delete</button>
             <div class="cover-border">
                 <h2>${library[i].title}</h2>
             </div>
@@ -81,7 +77,11 @@ function deleteBookFromLibrary(index) {
 function activateBtns() {
     deleteBookBtns.forEach(function(btn) {
         btn.addEventListener('click', e => {
-            deleteBookFromLibrary(e.target.dataset.indexNumber);
+            // finds the index of the object in array that matches the title
+            // if multiple objs have the same title it will delete the first obj in the array that matches the title
+            // if i wanted to be more specific I could give the obj an ".id" with a hash
+            let index = library.findIndex(i => i.title === e.target.dataset.title);
+            deleteBookFromLibrary(index);
         })
     })
 }
