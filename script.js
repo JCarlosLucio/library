@@ -7,6 +7,7 @@ const addBook = document.querySelector('#add-book');
 const newBook = document.querySelector('#new-book');
 const form = document.querySelector('#form');
 let deleteBookBtns = [];
+let readBtns = [];
 
 // Starter Books
 const hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
@@ -41,15 +42,16 @@ function render() {
             </div>
                 <h3>${library[i].author}</h3>
                 <h4>${library[i].pages} pages</h4>
-                <button class="read-btn">
+                <button class="read-btn" data-title="${library[i].title}">
                     ${library[i].read ? 'Read' : 'Not read'}
                 </button>
         </div>
         `;
     }
     shelf.innerHTML = shelfString;
-    //  find new delete-book btns to update the nodelist after a book is added
+    //  find new delete-book/read-btn btns to update the nodelist after a book is added
     deleteBookBtns = document.querySelectorAll('.delete-book');
+    readBtns = document.querySelectorAll('.read-btn');
     // gives the eventlistener to new btns created when a book is added
     activateBtns();
 }
@@ -71,7 +73,6 @@ function newBookHover() {
 
 // Toggle Book.read
 Book.prototype.readToggle = function () {
-    console.log(this.read);
     return this.read ? this.read = false : this.read = true;
 }
 
@@ -90,6 +91,14 @@ function activateBtns() {
             // if i wanted to be more specific I could give the obj an ".id" with a hash
             let index = library.findIndex(objInLibrary => objInLibrary.title === e.target.dataset.title);
             deleteBookFromLibrary(index);
+        })
+    })
+    readBtns.forEach(function (btn) {
+        btn.addEventListener('click', e => {
+            // if multiple objs have the same title it will change the status of only the first one
+            let index = library.findIndex(objInLibrary => objInLibrary.title === e.target.dataset.title);
+            library[index].readToggle();
+            render()
         })
     })
 }
