@@ -26,6 +26,10 @@ function Book(title, author, pages, read) {
 function addBookToLibrary() {
     let newBook = new Book(titleForm.value, authorForm.value, pagesForm.value, readForm.checked);
     library.push(newBook);
+    titleForm.value = '';
+    authorForm.value = '';
+    pagesForm.value = '';
+    readForm.checked = true;
     render();
     formToggle();
 }
