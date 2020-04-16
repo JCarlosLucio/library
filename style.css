@@ -132,19 +132,25 @@ header p {
 .delete-book {
     position: absolute;
     display: flex;
-    align-items: end;
-    margin-left: 0.8rem;
-    border-radius: 0 0 0.3rem 0.3rem;
-    width: 2rem;
-    height: 3.5rem;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15rem;
+    border-radius: 0 0.2rem 0.2rem 0;
+    width: 0.5rem;
+    height: 5rem;
     background-color: red;
-    border: 1px solid;
+    border: none;
     color: transparent;
-    font-size: 1rem;
     padding-bottom: 0.5rem;
-
+    font-family: 'Sanchez', serif;
+    font-size: 1.2rem;
+    writing-mode: sideways-lr;
+    text-orientation: mixed;
+    overflow: hidden;
 }
 
 .delete-book:hover {
     color: white;
+    width: 2rem;
+    transition: 0.3s linear;
 }
