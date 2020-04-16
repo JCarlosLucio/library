@@ -80,7 +80,7 @@ function activateBtns() {
             // finds the index of the object in array that matches the title
             // if multiple objs have the same title it will delete the first obj in the array that matches the title
             // if i wanted to be more specific I could give the obj an ".id" with a hash
-            let index = library.findIndex(i => i.title === e.target.dataset.title);
+            let index = library.findIndex(objInLibrary => objInLibrary.title === e.target.dataset.title);
             deleteBookFromLibrary(index);
         })
     })
