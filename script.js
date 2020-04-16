@@ -41,7 +41,9 @@ function render() {
             </div>
                 <h3>${library[i].author}</h3>
                 <h4>${library[i].pages} pages</h4>
-                <h4>${library[i].read ? 'Read' : 'Not read'}</h4>
+                <button class="read-btn">
+                    ${library[i].read ? 'Read' : 'Not read'}
+                </button>
         </div>
         `;
     }
