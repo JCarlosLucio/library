@@ -7,11 +7,14 @@ const addBook = document.querySelector('#add-book');
 const newBook = document.querySelector('#new-book');
 const form = document.querySelector('#form');
 
+let deleteBookBtns = [];
+let library = [];
+
 // Starter Books
 const hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
+library.push(hobbit);
 const harryPotter = new Book('Harry Potter and the Philosopher\'s Stone', 'J.K. Rowling', 246, true);
-
-let library = [hobbit, harryPotter];
+library.push(harryPotter);
 
 // book constructor function
 function Book(title, author, pages, read) {
@@ -19,6 +22,7 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.index = library.length;
 }
 
 // Adds books to the library array
@@ -35,6 +39,7 @@ function render() {
     for (let i = 0; i < library.length; i++) {
         shelfString += `
         <div class="cover">
+        <button class="delete-book" data-index-number="${library[i].index}">Delete</button>
             <div class="cover-border">
                 <h2>${library[i].title}</h2>
             </div>
@@ -45,6 +50,10 @@ function render() {
         `;
     }
     shelf.innerHTML = shelfString;
+    //  find new delete-book btns to update the nodelist after a book is added
+    deleteBookBtns = document.querySelectorAll('.delete-book');
+    // gives the eventlistener to new btns created when a book is added
+    activateBtns();
 }
 
 function formToggle() {
@@ -53,13 +62,28 @@ function formToggle() {
 }
 
 function newBookHover() {
-    if (newBook.firstElementChild.classList[1] === 'fa-book') { 
+    if (newBook.firstElementChild.classList[1] === 'fa-book') {
         newBook.firstElementChild.classList.remove('fa-book')
         newBook.firstElementChild.classList.add('fa-book-open')
     } else if(newBook.firstElementChild.classList[1] === 'fa-book-open') {
         newBook.firstElementChild.classList.remove('fa-book-open')
         newBook.firstElementChild.classList.add('fa-book')
     }
+}
+
+// Delete book from library array
+function deleteBookFromLibrary(index) {
+    library.splice(index, 1);
+    render();
+}
+
+// Gives the event listener to all delete-book btns, used when a book is added to also give it the eventlistener
+function activateBtns() {
+    deleteBookBtns.forEach(function(btn) {
+        btn.addEventListener('click', e => {
+            deleteBookFromLibrary(e.target.dataset.indexNumber);
+        })
+    })
 }
 
 newBook.addEventListener('mouseenter', newBookHover);
