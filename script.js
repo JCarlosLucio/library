@@ -63,10 +63,16 @@ function newBookHover() {
     if (newBook.firstElementChild.classList[1] === 'fa-book') {
         newBook.firstElementChild.classList.remove('fa-book')
         newBook.firstElementChild.classList.add('fa-book-open')
-    } else if(newBook.firstElementChild.classList[1] === 'fa-book-open') {
+    } else if (newBook.firstElementChild.classList[1] === 'fa-book-open') {
         newBook.firstElementChild.classList.remove('fa-book-open')
         newBook.firstElementChild.classList.add('fa-book')
     }
+}
+
+// Toggle Book.read
+Book.prototype.readToggle = function () {
+    console.log(this.read);
+    return this.read ? this.read = false : this.read = true;
 }
 
 // Delete book from library array
@@ -77,7 +83,7 @@ function deleteBookFromLibrary(index) {
 
 // Gives the event listener to all delete-book btns, used when a book is added to also give it the eventlistener
 function activateBtns() {
-    deleteBookBtns.forEach(function(btn) {
+    deleteBookBtns.forEach(function (btn) {
         btn.addEventListener('click', e => {
             // finds the index of the object in array that matches the title
             // if multiple objs have the same title it will delete the first obj in the array that matches the title
