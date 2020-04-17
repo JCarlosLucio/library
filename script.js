@@ -3,7 +3,7 @@ const titleForm = document.querySelector('#title');
 const authorForm = document.querySelector('#author');
 const pagesForm = document.querySelector('#pages');
 const readForm = document.querySelector('#read');
-const addBook = document.querySelector('#add-book');
+const newBookForm = document.querySelector('#new-book-form');
 const newBook = document.querySelector('#new-book');
 const form = document.querySelector('#form');
 let deleteBookBtns = [];
@@ -23,7 +23,7 @@ function Book(title, author, pages, read) {
 }
 
 // Adds books to the library array
-function addBookToLibrary() {
+function addBookToLibrary(event) {
     let newBook = new Book(titleForm.value, authorForm.value, pagesForm.value, readForm.checked);
     library.push(newBook);
     titleForm.value = '';
@@ -32,6 +32,7 @@ function addBookToLibrary() {
     readForm.checked = true;
     render();
     formToggle();
+    event.preventDefault();
 }
 
 // render books, loops through library and shows the books on shelf
@@ -110,5 +111,5 @@ function activateBtns() {
 newBook.addEventListener('mouseenter', newBookHover);
 newBook.addEventListener('mouseleave', newBookHover);
 newBook.addEventListener('click', formToggle);
-addBook.addEventListener('click', addBookToLibrary);
+newBookForm.addEventListener('submit', addBookToLibrary);
 render();
