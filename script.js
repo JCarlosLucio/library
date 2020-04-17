@@ -6,6 +6,8 @@ const readForm = document.querySelector('#read');
 const newBookForm = document.querySelector('#new-book-form');
 const newBook = document.querySelector('#new-book');
 const form = document.querySelector('#form');
+const darkModeNodes = document.querySelectorAll('.dark-mode');
+const darkModeToggle = document.querySelector('#dark-mode-toggle');
 let deleteBookBtns = [];
 let readBtns = [];
 
@@ -76,6 +78,20 @@ function newBookHover() {
     }
 }
 
+function toggleDarkMode() {
+    darkModeNodes.forEach(node => {
+        if (node.classList.value.includes('light')) {
+            node.classList.remove('light');
+            node.classList.add('dark');
+            darkModeToggle.textContent = 'Light Mode';
+        } else {
+            node.classList.remove('dark');
+            node.classList.add('light');
+            darkModeToggle.textContent = 'Dark Mode';
+        }
+    })
+}
+
 // Toggle Book.read
 Book.prototype.readToggle = function () {
     return this.read ? this.read = false : this.read = true;
@@ -108,6 +124,7 @@ function activateBtns() {
     })
 }
 
+darkModeToggle.addEventListener('click', toggleDarkMode);
 newBook.addEventListener('mouseenter', newBookHover);
 newBook.addEventListener('mouseleave', newBookHover);
 newBook.addEventListener('click', formToggle);
