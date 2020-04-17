@@ -89,6 +89,7 @@ header p {
     font-size: 1rem;
     background: none;
     border: 2px solid;
+    color: inherit;
     padding: 0.7rem 2rem;
 }
 
@@ -100,6 +101,7 @@ header p {
     border: none;
     margin-bottom: 1rem;
     padding: 1rem 2rem;
+    color: inherit;
 }
 
 #new-book:hover, #add-book:hover, .read-btn:hover {
@@ -163,4 +165,5 @@ header p {
     font-family: 'Cutive Mono', monospace;
     font-size: 1.1rem;
     height: 2rem;
+    color: inherit;
 }
