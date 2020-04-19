@@ -32,13 +32,19 @@ function addBookToLibrary(event) {
     authorForm.value = '';
     pagesForm.value = '';
     readForm.checked = true;
+    populateStorage();
     render();
     formToggle();
     event.preventDefault();
 }
 
-// render books, loops through library and shows the books on shelf
+// render books, checks if theres localStorage then sets up the library toloops through and shows the books on shelf
 function render() {
+    if (!localStorage.getItem('library')) {
+        populateStorage();
+    }
+    // Set local storage as the library array, returning it from a string with JSON.parse
+    library = JSON.parse(localStorage.getItem('library'));
     let shelfString = '';
     for (let i = 0; i < library.length; i++) {
         shelfString += `
@@ -61,6 +67,10 @@ function render() {
     readBtns = document.querySelectorAll('.read-btn');
     // gives the eventlistener to new btns created when a book is added
     activateBtns();
+    // Gives all objects of type Object readToggle method
+    Object.prototype.readToggle = function () {
+        return this.read ? this.read = false : this.read = true;
+    }
 }
 
 function formToggle() {
@@ -93,13 +103,22 @@ function toggleDarkMode() {
 }
 
 // Toggle Book.read
-Book.prototype.readToggle = function () {
-    return this.read ? this.read = false : this.read = true;
+// The type-juggling when using localStorage removes the Book.prototype from objects stored
+// so the books are given the readToggle method using Object.prototype after being rendered
+// Book.prototype.readToggle = function () {
+//     return this.read ? this.read = false : this.read = true;
+// }
+
+// populate localStorage
+//  library needs to be made into a string to be stored in localStorage using JSON.stringify
+function populateStorage() {
+    localStorage.setItem('library', JSON.stringify(library));
 }
 
 // Delete book from library array
 function deleteBookFromLibrary(index) {
     library.splice(index, 1);
+    populateStorage();
     render();
 }
 
@@ -119,6 +138,7 @@ function activateBtns() {
             // if multiple objs have the same title it will change the status of only the first one
             let index = library.findIndex(objInLibrary => objInLibrary.title === e.target.dataset.title);
             library[index].readToggle();
+            populateStorage();
             render()
         })
     })
