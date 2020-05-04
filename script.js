@@ -11,18 +11,24 @@ const darkModeToggle = document.querySelector('#dark-mode-toggle');
 let deleteBookBtns = [];
 let readBtns = [];
 
+class Book {
+	// book constructor function
+	constructor(title, author, pages, read) {
+		this.title = title;
+		this.author = author;
+		this.pages = pages;
+		this.read = read;
+	}
+	// Toggle Book.read
+	readToggle() {
+		return this.read ? (this.read = false) : (this.read = true);
+	}
+}
+
 // Starter Books
 const hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
 const harryPotter = new Book("Harry Potter and the Philosopher's Stone", 'J.K. Rowling', 246, true);
 let library = [ hobbit, harryPotter ];
-
-// book constructor function
-function Book(title, author, pages, read) {
-	this.title = title;
-	this.author = author;
-	this.pages = pages;
-	this.read = read;
-}
 
 // Adds books to the library array
 function addBookToLibrary(event) {
@@ -67,10 +73,16 @@ function render() {
 	readBtns = document.querySelectorAll('.read-btn');
 	// gives the eventlistener to new btns created when a book is added
 	activateBtns();
-	// Gives all objects of type Object readToggle method
-	Object.prototype.readToggle = function() {
-		return this.read ? (this.read = false) : (this.read = true);
-	};
+	// The type-juggling when using localStorage removes the Book.prototype from the objects stored
+	// so the Books are recreated after getting them from localStorage, so they can get the readToggle method
+	for (let i = 0; i < library.length; i++) {
+		library[i] = new Book(library[i].title, library[i].author, library[i].pages, library[i].read);
+	}
+	// Another way to do it would be to set readToggle method with Object.prototype as follows
+	// Object.prototype.readToggle = function() {
+	// 	return this.read ? (this.read = false) : (this.read = true);
+	// };
+	// but its better to limit readToggle method to only Books
 }
 
 function formToggle() {
@@ -101,13 +113,6 @@ function toggleDarkMode() {
 		}
 	});
 }
-
-// Toggle Book.read
-// The type-juggling when using localStorage removes the Book.prototype from objects stored
-// so the books are given the readToggle method using Object.prototype after being rendered
-// Book.prototype.readToggle = function () {
-//     return this.read ? this.read = false : this.read = true;
-// }
 
 // populate localStorage
 //  library needs to be made into a string to be stored in localStorage using JSON.stringify
