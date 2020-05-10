@@ -44,7 +44,7 @@ function addBookToLibrary(event) {
 	event.preventDefault();
 }
 
-// render books, checks if theres localStorage then sets up the library toloops through and shows the books on shelf
+// render books, checks if theres localStorage then sets up the library to loop through and shows the books on shelf
 function render() {
 	if (!localStorage.getItem('library')) {
 		populateStorage();
@@ -52,20 +52,20 @@ function render() {
 	// Set local storage as the library array, returning it from a string with JSON.parse
 	library = JSON.parse(localStorage.getItem('library'));
 	let shelfString = '';
-	for (let i = 0; i < library.length; i++) {
+	for (const book of library) {
 		shelfString += `
         <div class="cover">
-        <button class="delete-book" data-title="${library[i].title}">Delete</button>
+        <button class="delete-book" data-title="${book.title}">Delete</button>
             <div class="cover-border">
-                <h2>${library[i].title}</h2>
+                <h2>${book.title}</h2>
             </div>
-                <h3>${library[i].author}</h3>
-                <h4>${library[i].pages} pages</h4>
-                <button class="read-btn" data-title="${library[i].title}">
-                    ${library[i].read ? 'Read' : 'Not read'}
+                <h3>${book.author}</h3>
+                <h4>${book.pages} pages</h4>
+                <button class="read-btn" data-title="${book.title}">
+                    ${book.read ? 'Read' : 'Not read'}
                 </button>
         </div>
-        `;
+		`;
 	}
 	shelf.innerHTML = shelfString;
 	//  find new delete-book/read-btn btns to update the nodelist after a book is added
